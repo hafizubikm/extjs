@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+<link href="resources/css/ext-all.css" type="text/css" rel="stylesheet" />
+<script src="adapter/ext/ext-base.js" type="text/javascript"></script>
+<script src="ext-all-debug.js" type="text/javascript"></script>
+<script>
+	Ext.onReady(function(){
+		new Ext.Toolbar({
+			renderTo:document.body,
+			style: "margin: 50px auto; box-shadow:0px 0px 20px #00ff00; border-radius:10px; background-color:red",
+			items:[{
+				xtype:'tbbutton',
+				text:'Click me',
+				handler:function(){
+					Ext.Msg.alert('Hello', 'Here I am')
+				}
+			},{
+				xtype:'tbspacer'
+			},{
+				xtype:'tbseparator',// for space
+			},{
+				xtype:'textfield',
+			},{
+				xtype:'tbbutton',
+				text:'Menu Button',
+				style:"background-color:red; padding:0px 50px",
+					menu:[{
+						text:'Better',
+						style:"background-color:red; padding:0px 50px",
+					},{
+						text:'Good',
+						style:"background-color:red; padding:0px 50px",
+							menu:[{
+								text:'Good one',
+								style:"background-color:green; padding:0px 50px",
+							},{
+								text:'Good two',
+								style:"background-color:green; padding:0px 50px",
+							},{
+								text:'Good three',
+								style:"background-color:green; padding:0px 50px",
+							},{
+								text:'Good four',
+								style:"background-color:green; padding:0px 50px",
+							},{
+								text:'Good five',
+								style:"background-color:green; padding:0px 50px",
+							}]
+					},{
+						text:'Best',
+						style:"background-color:red; padding:0px 50px",
+					}]
+			},{
+				xtype:'tbsplit',
+				text:'Split Button',
+				style:"background-color:lightgreen",
+					menu:[{
+						text:'Item One',
+					},{
+						text:'Item Two',
+					},{
+						text:'Item Three',
+					}]
+			}]
+		});
+		//object end
+	});
+	//function end
+</script>
+</head>
+
+<body>
+<div id="my_id"></div>
+</body>
+</html>

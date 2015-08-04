@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+<link href="resources/css/ext-all.css" type="text/css" rel="stylesheet" />
+<script src="adapter/ext/ext-base.js" type="text/javascript"></script>
+<script src="ext-all-debug.js" type="text/javascript"></script>
+<script>
+var genres=new Ext.data.SimpleStore
+({
+fields:['id','genre'],
+data:[['1','Comedy'],['2','Drama'],['3','Action']]
+});
+Ext.onReady(function()
+		{
+		Ext.QuickTips.init();
+		var movie_form=new Ext.FormPanel
+		({
+			url:'move-form-submit.php',
+			renderTo:document.body,
+			frame:true,
+			title:'Movie Information From',
+			width:400,
+			style:'margin:0 auto; border:2px solid red; border-radius: 5px; box-shadow:-10px 10px 60px black ',
+			items:
+				[{
+					xtype:'textfield',
+					fieldLabel:'Title',
+					name:'director',
+					emptyText:'Enter title',
+					allowBlank:false
+					},
+					{
+					xtype:'textfield',
+					fieldLabel:'Director',
+					name:'director',
+					vtype:'alpha'
+					},
+					{
+					xtype:'datefield',
+					fieldLabel:'Released',
+					name:'released',
+					disabledDays:[5]
+					},
+					{
+					xtype:'radio',
+					fieldLabel:'Flimed In',
+					name:'filmed_in',
+					boxLabel:'Color'
+					},
+					{
+					xtype:'radio',
+					hideLabel:false,
+					labelSeparator:'',
+					name:'filmed_in',
+					boxLabel:'Black & White'
+					},
+					{
+					xtype:'checkbox',
+					fieldLabel:'Bad movie',
+					name:'bad_movie',
+					
+					},
+					{
+					xtype:'combo',
+					name:'genre',
+					mode:'local',
+					store:genres,
+					displayField:'genre',
+					fieldLabel:'Movie Type',
+					width:120
+					},
+					{
+					xtype:'textarea',
+					name:'description',
+					fieldLabel:'Description',
+					labelSeparator:'',
+					height:100,
+					anchor:'100%'
+					},
+					{
+					xtype:'htmleditor',
+					name:'description',
+					hideLabel:true,
+					labelseparator:'',
+					height:100,
+					anchor:'100%'
+					
+				}],
+				buttons:
+				[{
+					text:'save'
+					},
+					{
+					text:'Reset'
+				}]
+			});	
+					
+		});
+</script>
+</head>
+
+<body>
+<div id="my_id"></div>
+</body>
+</html>

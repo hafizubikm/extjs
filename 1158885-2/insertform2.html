@@ -1,0 +1,40 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Untitled Document</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link type="text/css" rel="stylesheet" href="../resources/css/ext-all.css"/>
+<script type="text/javascript" language="javascript" src="../adapter/ext/ext-base.js"></script>
+<script type="text/javascript" language="javascript" src="../ext-all.js"></script>
+<script type="text/javascript" language="javascript">
+Ext.onReady(function(){
+	Ext.QuickTips.init();
+	var form=new Ext.form.FormPanel({
+		frame:true, title:'Insert information', url:'insertt.php', width:500, renderTo:'divid',
+			items:[
+				{xtype:'textfield',fieldLabel:'Name', width:300, allowBlank:false, name:'txtname'},
+				{xtype:'textarea',fieldLabel:'Address', width:300, allowBlank:false, name:'txtadd'},
+				{xtype:'textfield',fieldLabel:'Email', width:300, allowBlank:false, name:'txtemail'},
+			],
+			buttons:[{
+				text:'Save',
+				handler:function(){
+					Ext.from.getForm().submit({
+						success:function(){
+							Ext.Msg.alert('Submit', 'Successfully inserted')
+						}
+					});
+				}
+			}]
+	});
+});
+
+
+</script>
+</head>
+
+<body>
+<div id="divid"></div>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Username Chexk</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<script type="text/javascript" language="javascript">
+	var p=false;
+	if(window.XMLHttpRequest){
+		p=new XMLHttpRequest();
+	}
+	
+	else if(window.ActiveXObject){
+		p=new ActiveXObject("Microsoft.XMLHTTP");
+	}
+	
+	function getData(data,result){
+		if(p){
+			p.open('GET', data);
+			p.onreadystatechange=function(){
+				if(p.readyState==4 && p.status==200){
+					document.getElementById('result').innerHTML=p.responseText;
+				}
+			}
+			p.send();
+	
+	}// end function
+	
+	}
+</script>
+</head>
+
+<body>
+<form>
+  <table width="600" border="1" cellspacing="2" cellpadding="2">
+    <tr>
+      <td width="107">User Chack </td>
+      <td width="473">&nbsp;</td>
+    </tr>
+    <tr>
+      <td>Username</td>
+      <td><input name="uname" type="text" id='uname' onKeyup="getData('user.php?name='+uname.value, 'result')"> <span id="result"></span></td>
+    </tr>
+  </table>
+</form>
+</body>
+</html>

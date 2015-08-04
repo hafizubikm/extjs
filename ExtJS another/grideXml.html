@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>ExtJS Displaying data using grid</title>
+<link href="resources/css/ext-all.css" type="text/css" rel="stylesheet" />
+<script src="adapter/ext/ext-base.js" type="text/javascript"></script>
+<script src="ext-all-debug.js" type="text/javascript"></script>
+<script>
+function cover_image(val){
+	return'<img width=50px height=50px src='+val+'>';
+}
+Ext.onReady(function(){
+	var store=new Ext.data.Store({
+		url:'movie.xml',
+		reader:new Ext.data.XmlReader({record:'row', id:'id'},
+		['id','title','director',{name:'released', type:'date', dateFormat:'Y-m-d'}, 'genre', 'tagline','pic', {name:'price', type:'float'},{name:'available', type:'bool'}])
+	}); //Store end
+	store.load();
+	var grid = new Ext.grid.GridPanel({
+		renderTo:Ext.get('div1'),
+		style: "margin: 50px auto; box-shadow:0px 0px 20px #00ff00; border-radius:10px; background-color:red;",
+		frame:true,
+		title: 'Movie Database Information',
+		height:200,
+		width:800,
+		store:store,
+		stripeRows:true,
+		columns: [
+			{header: "Title", dataIndex: 'title', renderer:'uppercase'},
+			{header: "Director", dataIndex: 'director'},
+			{header: "Released", dataIndex: 'released', renderer: Ext.util.Format.dateRenderer('m/d/Y')},
+			{header: "Genre", dataIndex: 'genre'},
+			{header: "Tagline", dataIndex: 'tagline'},
+			{header: "Rate", dataIndex: 'price'},
+			{header: "Available", dataIndex: 'available'},
+			{header: "Picture", dataIndex:'pic',renderer:cover_image}
+		]
+	}); //GridPanel end
+}); //onReady end
+</script>
+</head>
+
+<body>
+<div id="div1" style="border:1px solid black; width:850px; margin:20px auto; border-radius:10px"></div>
+</body>
+</html>

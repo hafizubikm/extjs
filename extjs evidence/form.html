@@ -1,0 +1,65 @@
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>student information</title>
+<link href="../resources/css/ext-all.css"  type="text/css" rel="stylesheet" />
+<script language="javascript" type="text/javascript" src="../adapter/ext/ext-base.js"></script>
+<script language="javascript" type="text/javascript"  src="../ext-all.js"></script>
+<script language="javascript" type="text/javascript">
+Ext.onReady(function() {
+ Ext.QuickTips.init(); //massage
+ var form = new Ext.form.FormPanel({
+					renderTo:'idbform',
+					title:'Insert Information',
+					url:'insert.php',
+					width:450,
+					frame:true,
+ 					items: [
+ {xtype:'textfield',
+                        fieldLabel: 'First Name',
+                        name: 'name',
+						allowBlank:false ,
+						width:300                       
+                    },
+{xtype:'textarea',
+                        fieldLabel: 'Address',
+                        name: 'address',
+						allowBlank:false,
+						width:300                       
+                    },
+{xtype:'textfield',
+                        fieldLabel: 'Email',
+                        name: 'email',
+						allowBlank:false,
+						vtype:'email',
+						width:300                        
+                    }
+					],
+					buttons:[{
+					text:'Save',
+					handler:function(){
+                    form.getForm().submit({
+                        success: function(){
+                            Ext.Msg.alert('Success', 'Inserted Successfully');
+                        },
+						});
+						}
+					}]
+
+	});
+	});
+
+</script>
+</head>
+
+<body>
+<div  style="margin-left:200px; margin-top:100px" id="idbform"></div>
+<a href="empdisplay.html">View the information in grid</a>
+</body>
+</html>
+
+
+
+
+
+

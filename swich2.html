@@ -1,0 +1,50 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+"http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>First ExtJS</title>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<link href="resources/css/ext-all.css" type="text/css" rel="stylesheet">
+<style>
+.icon{
+background:url(test.png) no-repeat;
+}
+</style>
+<script type="text/javascript" language="javascript" src="adapter/ext/ext-base.js"></script>
+<script type="text/javascript" language="javascript" src="ext-all-debug.js"></script>
+<script type="text/javascript" language="javascript">
+Ext.onReady(function(){
+	Ext.Msg.show({
+	title:'Milton', msg:'Have you seen my stapler?',
+		buttons:{yes:true,	no:true,	 cancel:true, ok:true},
+		icon:'icon',
+		fn:function(btn){
+			switch(btn){
+				case 'yes':
+				Ext.Msg.prompt('Milton','Where is it?'function(btn,txt){
+					if(txt.toLowerCase()=='the office'){
+						Ext.get('my_id').dom.innerHTML='I am working at office';
+					}
+						else{
+							Ext.get('my_id').dom.innerHTML=txt;
+						}
+				});
+				break;
+				
+				case 'no':
+				Ext.Msg.alert('Milton','I am going to burn the bulding down!');
+				break;
+				
+				case 'cancel':
+				Ext.Msg.wait('Saving tables to disk....','File Copy');
+				break;
+			}
+		}
+	});
+});
+</script>
+</head>
+
+<body>
+</body>
+</html>
